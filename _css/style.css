@@ -1,0 +1,8 @@
+/* import stylesheet files */
+
+@import url("reset.css")/*tpa=http://iweb-studio.com/themepreview/lp/versuz/css/reset.css*/;
+@import url("base.css")/*tpa=http://iweb-studio.com/themepreview/lp/versuz/css/base.css*/;
+@import url("typography.css")/*tpa=http://iweb-studio.com/themepreview/lp/versuz/css/typography.css*/;
+
+@import url("main.css")/*tpa=http://iweb-studio.com/themepreview/lp/versuz/css/main.css*/;
+@import url("media-screen.css")/*tpa=http://iweb-studio.com/themepreview/lp/versuz/css/media-screen.css*/;
