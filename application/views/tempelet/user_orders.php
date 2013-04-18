@@ -10,10 +10,10 @@
             echo '<tr>';
             $flag = 1;
         } else {
-            $flag=0;
+            $flag = 0;
         }
         ?>
-            <!--<tr>-->
+                    <!--<tr>-->
         <td>
             <div id="most">
                 <img src="<?php echo base_url(); ?>imagesService/thumb/<?php echo $record->photo_name; ?>"  width="60" height="50"/>

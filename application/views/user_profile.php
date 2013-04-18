@@ -178,10 +178,30 @@
 
                         <div class="heading center" style="background-color:transparent">
                             <div class="dotted"></div>
-                            <h4><span class="bold" style="color:#fff">الخدمات التي تم شرائها</span></h4>
+                            <h4><span class="bold" style="color:#fff">خدمات تم حجزها ولم تنفذ بعد</span></h4>
                             <div class="dotted"></div>
                             <?php
-                            $sql = "SELECT * FROM `order` INNER JOIN `user` ON order.u_id = user.id INNER JOIN `service` ON order.s_id = service.id where user.id=";
+                            $sql = "SELECT * FROM `order` INNER JOIN `user` ON order.u_id = user.id INNER JOIN `service` ON order.s_id = service.id  where order.statu=0 and user.id=";
+                            if ($this->session->userdata('user_id')) {
+                                $sql.=$this->session->userdata('user_id');
+                                $sql.=' ORDER BY `order`.`start` DESC';
+                            }
+                            $q = $this->db->query($sql);
+                            if ($q->num_rows() > 0) {
+                                $res = $q->result();
+                                include 'tempelet/user_orders.php';
+                            }
+                            ?>
+
+                        </div>
+
+                        <div class="clear"></div>
+                        <div class="heading center" style="background-color:transparent">
+                            <div class="dotted"></div>
+                            <h4><span class="bold" style="color:#fff">خدمات تم حجزها وجارى  تنفذها </span></h4>
+                            <div class="dotted"></div>
+                            <?php
+                            $sql = "SELECT * FROM `order` INNER JOIN `user` ON order.u_id = user.id INNER JOIN `service` ON order.s_id = service.id  where order.statu=1 and user.id=";
                             if ($this->session->userdata('user_id')) {
                                 $sql.=$this->session->userdata('user_id');
                                 $sql.=' ORDER BY `order`.`start` DESC';
@@ -195,7 +215,27 @@
 
                         </div>
                         <div class="clear"></div>
-                        <div class="dotted"></div>
+                       <div class="clear"></div>
+                        <div class="heading center" style="background-color:transparent">
+                            <div class="dotted"></div>
+                            <h4><span class="bold" style="color:#fff">خدمات تم الأنتهاء من تنفيذها  </span></h4>
+                            <div class="dotted"></div>
+                            <?php
+                            $sql = "SELECT * FROM `order` INNER JOIN `user` ON order.u_id = user.id INNER JOIN `service` ON order.s_id = service.id  where order.statu=2 and user.id=";
+                            if ($this->session->userdata('user_id')) {
+                                $sql.=$this->session->userdata('user_id');
+                                $sql.=' ORDER BY `order`.`start` DESC';
+                            }
+                            $q = $this->db->query($sql);
+                            if ($q->num_rows() > 0) {
+                                $res = $q->result();
+                                include 'tempelet/user_orders.php';
+                            }
+                            ?>
+
+                        </div>
+                        <div class="clear"></div>
+                       <div class="dotted"></div>
                         <table width="450" border="0" style="float:right;text-align:right;margin-right:-20px;">
                             <tr>
                                 <td>
@@ -275,7 +315,7 @@
                                         <td> <?php echo form_textarea(array('name' => 'topic', 'id' => "email", 'value' => $this->input->post('email'))); ?></td>
                                         <td><p style="position:absolute;margin-top:10px;float:right;margin-left:80px;">الموضوع</p></td>
                                     </tr>
-                                    
+
                                     <tr>
 
                                         <td> <?php echo form_textarea(array('name' => 'tags', 'id' => "email", 'value' => $this->input->post('tags'))); ?></td>
@@ -388,7 +428,7 @@
                 <div id="right" style="display:block">
                     <?php include 'tempelet/main_menu.php'; ?>
                     <div id="clear"></div>
-                   <?php include 'tempelet/righ.php';?>
+                    <?php include 'tempelet/righ.php'; ?>
                 </div>
 
             </div>

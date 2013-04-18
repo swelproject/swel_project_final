@@ -1,4 +1,3 @@
-أسم الخدمة 
 <?php $id = $this->uri->segment(3); ?>
 
 <?php
@@ -12,10 +11,12 @@ if ($query->num_rows() > 0) {
     }
 }
 echo form_open('site/confirm_order');
-echo $row->name;
-echo '</br>
-هل انت متاكد من انك تريد شراء هذه الخدمة مقابل';
-echo $row->price_point;
+echo '<p style="color: #fff; font-size: 20px;">أسم الخدمة : ' . $row->name . '</p>';
+//echo $row->name;
+echo '<p style="color: #fff; font-size: 17px;">' . 'هل انت متاكد من انك تريد شراء هذه الخدمة مقابل' .'  : '. $row->price_point . '</p>';
+//echo '</br>
+//هل انت متاكد من انك تريد شراء هذه الخدمة مقابل';
+//echo $row->price_point;
 //echo form_input('order_id', $row->id);
 //echo form_input('order_price', $row->price_point);
 //echo form_hidden(array('name' => 'order_id', 'value' => $row->id));
