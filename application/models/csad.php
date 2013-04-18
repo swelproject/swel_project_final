@@ -21,6 +21,11 @@ class csad extends CI_Model {
         return $this->db->update($table, $data);
     }
 
+    function addcomment($data) {
+        $insert = $this->db->insert('service_message', $data);
+        return $insert;
+    }
+
 }
 
 ?>

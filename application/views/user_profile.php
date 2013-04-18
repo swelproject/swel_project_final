@@ -59,12 +59,12 @@
                 <div id="top-wrapp">
                     <?php include('header.php') ?>
                     <?php include 'dbcon_blog.php'; ?>
+                    <?php include 'tempelet/news.php'; ?>
                 </div>
             </section>
             <!-- end of section top -->
 
             <!-- start of section middle -->
-            <?php include 'tempelet/news.php'; ?>
             <div id="content">
                 <div id="left">
                     <div id="profile_half1">
@@ -73,10 +73,10 @@
 
 
                         <img src="<?php echo base_url(); ?>images/profile/thumb_profile/<?php
-            if (isset($pic)) {
-                echo $pic;
-            }
-            ?>"   class="user_profile" width="190" height="160" />                  
+                    if (isset($pic)) {
+                        echo $pic;
+                    }
+                    ?>"   class="user_profile" width="190" height="160" />                  
 
 
                         <table width="400" id="user_data" border="">
@@ -86,7 +86,7 @@
                              if (isset($user_id)) {
                                  echo $user_id;
                              }
-            ?>">
+                    ?>">
                                                <?php
                                                if (isset($username)) {
                                                    echo $username;
@@ -215,7 +215,7 @@
 
                         </div>
                         <div class="clear"></div>
-                       <div class="clear"></div>
+                        <div class="clear"></div>
                         <div class="heading center" style="background-color:transparent">
                             <div class="dotted"></div>
                             <h4><span class="bold" style="color:#fff">خدمات تم الأنتهاء من تنفيذها  </span></h4>
@@ -235,7 +235,7 @@
 
                         </div>
                         <div class="clear"></div>
-                       <div class="dotted"></div>
+                        <div class="dotted"></div>
                         <table width="450" border="0" style="float:right;text-align:right;margin-right:-20px;">
                             <tr>
                                 <td>

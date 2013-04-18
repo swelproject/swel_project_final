@@ -183,18 +183,18 @@ class User extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $this->load->library('form_validation');
             $this->form_validation->set_rules('topic_name', 'username', 'required|max_length[125]|trim|xss_clean');
-			$this->form_validation->set_rules('tags', 'tags', 'required|max_length[200]|trim|xss_clean');
+            $this->form_validation->set_rules('tags', 'tags', 'required|max_length[200]|trim|xss_clean');
             $this->form_validation->set_rules('topic', 'topic', 'required|trim|xss_clean|');
             $this->form_validation->set_rules('search_category', 'topic', 'required|trim|xss_clean|');
             $this->form_validation->set_rules('sub_category', 'sub_category', 'required|trim|xss_clean|');
             $this->form_validation->set_message('required', "جميع البيانات مطلوبه");
             $this->form_validation->set_message('max_length', "العنوان لا يجب ان يزيد عن 125 حرف");
-        
+
             if ($this->form_validation->run()) {
                 $id = $this->session->userdata('user_id');
                 $this->load->model('user_model');
                 if ($this->user_model->add_topic($id)) {
-					
+
                     $data['topic_added'] = 'تم اضافه الموضوع بنجاح الي المدونه';
 
                     $this->load->model('site_model');

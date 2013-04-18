@@ -57,7 +57,7 @@
             <!-- start of section top -->
             <section id="top">
                 <div id="top-wrapp">
-                    <?php include('header.php') ?>
+                    <?php include 'tempelet/header.php'; ?>
                 </div>
             </section>
             <!-- end of section top -->
@@ -71,23 +71,24 @@
             <div id="content">
                 <div id="left" style="min-height:500px;">
                     <h3 style="float:right;color:#fff;width:800px;text-align:center">اخر الرسائل الوارده اليك</h3>                       
+
+
                     <?php
-                    $sql = 'select * FROM service_message 
-                        WHERE ((`service_message`.`sender_id` = 10) OR (`service_message`.`resiver_id` = 10))
-                        ';
-                    //OR ((`service_message`.`sender_id` = 10) AND (`service_message`.`resiver_id` = 15))
-//                    $user_messages = $this->db->get('service_message');
-                    $user_messages = $this->db->query($sql);
-                    if ($user_messages->num_rows() > 0) {
-                        $user_messages = $user_messages->result();
+                    if (isset($user_messages)) {
                         foreach ($user_messages as $user_message) {
                             ?>
-                            <div class="blog-one left"  style="background:#333" style="background:#111" >
-                                <a href=""><img id="mail_icon" src="" width="40" height="40" /></a>
-                                <p id="sender" style=""><a style="color:#FC0" href=""><?php echo $user_message->message; ?></a></p>
-                                <p id="sender" style="color:#F90;">From :<?php echo $user_message->sender_u_name; ?></p>
-                                <p id="sender" style="color:#fff;float:left;padding-left:20px;"><?php echo $user_message->date; ?></p>
-                            </div>
+
+
+                            <div class="blog-one left" <?php if ($user_message->receiv_seen == 0) { ?> style="background:#333" <?php } else { ?>style="background:#111" <?php } ?> >
+                                <a href="<?php echo base_url(); ?>user/visit_profile/<?php echo $user_message->id; ?>"><img id="mail_icon" src="<?php echo base_url(); ?>images/profile/thumb_profile/<?php echo $user_message->photo ?>" width="40" height="40" />	</a>
+                                <p id="sender" style="color:#eeeeee;padding-right:5px;">  </p>
+                                <p id="sender" style="padding:0 5px 0 5px;color:#3C6"><a style="color:#fff" id="user" href="<?php echo base_url(); ?>user/visit_profile/<?php echo $user_message->id; ?>"><?php echo $user_message->username; ?></a></p>
+
+                                <p id="sender" style=""><a style="color:#FC0" href="<?php echo base_url(); ?>user/messages/<?php echo $user_message->sender_id; ?>"><?php echo $user_message->message; ?></a></p>
+                                <p id="sender" style="color:#F90;">....</p>
+                                <p id="sender" style="color:#fff;float:left;padding-left:20px;"><?php echo $user_message->timestamp; ?></p>
+                            </div><!--/blog-one-->
+
                             <?php
                         }
                     } else {
@@ -101,20 +102,20 @@
 
 
                 <div id="right">
-
-                    <?php
-                    include 'tempelet/main_menu.php';
-                    ?>
+                    <?php include 'tempelet/menu.php'; ?>
 
                     <div id="clear"></div>
-                    <?php include 'tempelet/righ.php'; ?>
+
+                    <?php include 'tempelet/serv_block.php'; ?>
                 </div>
 
             </div>
+
+
             <!-- end of section middle -->
 
             <!-- start of section bottom -->
-            <?php include('footer.php') ?>
+            <?php include 'tempelet/footer.php'; ?>
             <!-- end of section bottom -->
 
         </div>

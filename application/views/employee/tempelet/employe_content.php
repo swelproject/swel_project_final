@@ -12,7 +12,7 @@
         ?>
         <tr>
             <td>
-                <p><a href="<?php echo base_url();?>csad/c_sad/perform/<?php echo $record->order_id; ?>">
+                <p><a href="<?php echo base_url();?>csad/c_sad/chat_user/<?php echo $record->order_id; ?>/<?php echo $record->user_id;?>">
                         تنفيذ الخدمة
                     </a></p> 
             </td>
