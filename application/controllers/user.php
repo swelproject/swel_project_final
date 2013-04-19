@@ -485,6 +485,9 @@ class User extends CI_Controller {
             redirect('site/index');
         }
     }
+    function chat_service(){
+        
+    }
 
 }
 
