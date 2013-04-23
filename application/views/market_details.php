@@ -156,7 +156,7 @@
                                                                 </div>
 
                                                             </div>
-                                                       
+
                                                         </h4>
                                                     </div>
                                                     <table width="750" border="0" id="serv_content" style="margin-top:-20px;margin-bottom:20;margin-right:20px;background:#355009;">
@@ -169,51 +169,55 @@
 
                                                         </tr>
                                                     </table>
-<div id="clear"></div>
+                                                    <div id="clear"></div>
                                                     <a href="<?php echo base_url(); ?>site/order/<?php echo $row->id ?>" style="margin-top:10px;float:left;margin-left:26px" id="ask2">أطلب الخدمه</a>
                                                     </br>
                                                     <div id="clear"></div>
-                                                   <div id="clear"></div>
-                        <div class="heading center" style="background-color:transparent">
-                            <div class="dotted"></div>
-                            <h4><span class="bold" style="color:#fff">الخدمات المشابه</span></h4>
-                            <div class="dotted"></div>
-                        </div>
-                        <table width="450" border="0" style="margin:auto">
-                            <tr>
-                               <?php if(isset($same_topics1)){
-							foreach($same_topics1 as $topic1){
-							?>
-                           
-                                <td>
-                                    <div id="most">
-                                        <img src="<?php echo base_url(); ?>imagesService/thumb/<?php echo $topic1->photo_name ; ?>"  width="60" height="50"/>
-                                        <h6 id="h6" style="margin-top:-5px;"><a href="<?php echo base_url(); ?>site/blog_details/<?php echo $topic1->id.'/'.$topic1 ->c_id; ?>"><?php echo  $topic1->name ; ?></a></h6>
-                                        <p id="p" style="background:none;margin-right:"><?php echo $topic1->detail ; ?></p>
-                                    </div>
-                                </td>
-                           
-                            <?php } }?>
-                            </tr>
-                            <tr>
-                                <?php if(isset($same_topics2)){
-							foreach($same_topics2 as $topic1){
-							?>
-                           
-                                <td>
-                                    <div id="most">
-                                        <img src="<?php echo base_url(); ?>imagesService/thumb/<?php echo $topic1->photo_name ; ?>"  width="60" height="50"/>
-                                        <h6 id="h6" style="margin-top:-5px;"><a href="<?php echo base_url(); ?>site/blog_details/<?php echo $topic1->id.'/'.$topic1 ->c_id; ?>"><?php echo  $topic1->name ; ?></a></h6>
-                                        <p id="p" style="background:none;margin-right:"><?php echo $topic1->detail ; ?></p>
-                                    </div>
-                                </td>
-                           
-                           
-                            <?php } }?>
-                            </tr>
-                        </table>
+                                                    <div id="clear"></div>
+                                                    <div class="heading center" style="background-color:transparent">
+                                                        <div class="dotted"></div>
+                                                        <h4><span class="bold" style="color:#fff">الخدمات المشابه</span></h4>
+                                                        <div class="dotted"></div>
+                                                    </div>
+                                                    <table width="450" border="0" style="margin:auto">
+                                                        <tr>
+                                                            <?php
+                                                            if (isset($same_topics1)) {
+                                                                foreach ($same_topics1 as $topic1) {
+                                                                    ?>
 
-                                                    
+                                                                    <td>
+                                                                        <div id="most">
+                                                                            <img src="<?php echo base_url(); ?>imagesService/thumb/<?php echo $topic1->photo_name; ?>"  width="60" height="50"/>
+                                                                            <h6 id="h6" style="margin-top:-5px;"><a href="<?php echo base_url(); ?>site/blog_details/<?php echo $topic1->id . '/' . $topic1->c_id; ?>"><?php echo $topic1->name; ?></a></h6>
+                                                                            <p id="p" style="background:none;margin-right:"><?php echo $topic1->detail; ?></p>
+                                                                        </div>
+                                                                    </td>
+
+                <?php }
+            } ?>
+                                                        </tr>
+                                                        <tr>
+                                                            <?php
+                                                            if (isset($same_topics2)) {
+                                                                foreach ($same_topics2 as $topic1) {
+                                                                    ?>
+
+                                                                    <td>
+                                                                        <div id="most">
+                                                                            <img src="<?php echo base_url(); ?>imagesService/thumb/<?php echo $topic1->photo_name; ?>"  width="60" height="50"/>
+                                                                            <h6 id="h6" style="margin-top:-5px;"><a href="<?php echo base_url(); ?>site/blog_details/<?php echo $topic1->id . '/' . $topic1->c_id; ?>"><?php echo $topic1->name; ?></a></h6>
+                                                                            <p id="p" style="background:none;margin-right:"><?php echo $topic1->detail; ?></p>
+                                                                        </div>
+                                                                    </td>
+
+
+                <?php }
+            } ?>
+                                                        </tr>
+                                                    </table>
+
+
                                                     <!--///-->
                                                     <div id="clear"></div>  
                                                     <div id="comments"> 
@@ -241,10 +245,10 @@
 
                             <div id="right">
 
-                                <?php include 'tempelet/main_menu.php'; ?>
+<?php include 'tempelet/main_menu.php'; ?>
                                 <div id="clear"></div>
 
-                                <?php include 'tempelet/righ.php'; ?>
+<?php include 'tempelet/righ.php'; ?>
                             </div>	
                     </section>
 
@@ -253,7 +257,7 @@
             <!-- end of section middle -->
 
             <!-- start of section bottom -->
-            <?php include('footer.php') ?>
+<?php include('footer.php') ?>
             <!-- end of section bottom -->
 
         </div>

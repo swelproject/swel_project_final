@@ -205,7 +205,7 @@ class sitead extends CI_Model {
 //            $date = date_create(date("Y-m-d"));
 //            $date =date_add(date_create(date("Y-m-d")), date_interval_create_from_date_string('5 days'));
 //            $time = strtotime($date);
-            $date = Date('Y:m:d', strtotime("+".$duration." days"));
+            $date = Date('Y:m:d', strtotime("+" . $duration . " days"));
             $this->db->insert('order', array('s_id' => $order_id, 'u_id' => $user_id, 'c_id' => $c_id, 'sc_id' => $sc_id, 'duration' => $duration, 'end' => $date));
             $this->db->where('id', $user_id);
             $this->db->update('user', array('amount_point' => $amount));
@@ -219,6 +219,10 @@ class sitead extends CI_Model {
                 $this->load->view('message', $data);
 //            echo 'Error';
             } else {
+                //get user_id
+                $this->load->model('notifications');
+                $this->notifications->add($user_id, 'تمت عملية شراء الخدمة'.'مقابل'.$order_id.' شلن'.'', 'user/profile', 'user', 'user', 'الخدمة');
+                //
                 //redirect
 //            echo 'Goooooooooooooood';
                 $data = array(
@@ -271,6 +275,18 @@ class sitead extends CI_Model {
     function update_block($data, $name) {
         $this->db->where('name', $name);
         return $this->db->update('block', $data);
+    }
+
+    function get_user_id($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('topic');
+        if ($query->num_rows() > 0) {
+            $rows = $query->result();
+
+            foreach ($rows as $row) {
+                return $row->user_id;
+            }
+        }
     }
 
 }

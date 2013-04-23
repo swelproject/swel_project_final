@@ -9,6 +9,9 @@ class User extends CI_Controller {
 
         $this->profile();
     }
+    function  tree(){
+        $this->load->view('tree');
+    }
 
     ///////////////////
     function profile() {
@@ -51,6 +54,10 @@ class User extends CI_Controller {
                 $id = $this->session->userdata('user_id');
                 $upload = $this->user_model->do_upload($id);
                 $data['error'] = "svsdf";
+                //add images
+                
+                $this->load->model('notifications');
+                $this->notifications->add($this->session->userdata('user_id'),'تم تحديث صورتك الشخصية .','user/profile','user','Site','Yor Photo');
                 redirect('user/profile', $data);
             }
         } else {
@@ -485,8 +492,69 @@ class User extends CI_Controller {
             redirect('site/index');
         }
     }
-    function chat_service(){
-        
+
+    function addcomment() {
+        $this->load->model('user_model');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('chat_message', 'Chat Message', 'required|trim|max_length[100]|xss_clean');
+        $this->load->helper('date');
+
+        if ($this->form_validation->run() == false) {
+            $message = array("mes" => " لا تترك النص فارغ");
+            $this->load->view('user/chat_service/', $message);
+//            $this->loadAddCategory();
+        } else {
+            $chat_message = $this->input->post('chat_message');
+            $order_id = $_POST['order_id'];
+            $employe_id = $_POST['employe_id'];
+            //
+            $this->db->from('employee');
+            $this->db->where('id', $employe_id);
+            $query = $this->db->get();
+            if ($query->num_rows() == 1) {
+                $rows = $query->result();
+                foreach ($rows as $row) {
+                    $name = $row->username;
+
+                    //
+                    $data = array(
+                        'sender_id' => $this->session->userdata('user_id'),
+                        'sender_u_name' => $this->session->userdata('user_name'),//user_name
+                        'resiver_id' => $employe_id, //user_name
+                        'order_id' => $order_id, //
+                        'reciver_u_name' => $name,
+                        'message' => $chat_message,
+                        'recive_seen' => 0,
+                        'date' => date('Y-m-d H:i:s', now()),
+                        'type' => 'user'
+                    );
+                    if ($this->user_model->addcomment($data)) {
+                        $message = array("mes" => "تم أضافة " . $chat_message . " .");
+//                unset($this->input->post('categoryname'));
+//                $this->load->view('civou/view_allcategory', $message);
+                        redirect('user/chat_service/' . $order_id . '/' . $employe_id);
+//                $this->loadAddCategory();
+                    } else {
+                        $message = array("mes" => "لقد حدثت مشكله فى الاضافه .");
+                        $this->load->view('user/chat_service/'.$order_id, $message);
+//                $this->loadAddCategory($message);
+                    }
+                }
+            }
+        }
+    }
+
+    function chat_service() {
+
+        if ($this->session->userdata('logged_in')) {
+            if ($this->uri->segment(3) != '') {
+                $this->load->view('service_chat');
+            } else {
+                redirect('site/index');
+            }
+        } else {
+            redirect('site/index');
+        }
     }
 
 }

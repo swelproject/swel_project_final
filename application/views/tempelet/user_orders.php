@@ -17,7 +17,7 @@
         <td>
             <div id="most">
                 <img src="<?php echo base_url(); ?>imagesService/thumb/<?php echo $record->photo_name; ?>"  width="60" height="50"/>
-                <h6 id="h6"><a href="chat_service/<?php echo $record->order_id; ?>"><?php echo $record->name; ?></a></h6>
+                <h6 id="h6"><a href="chat_service/<?php echo $record->order_id; ?>/<?php echo $record->e_id?>"><?php echo $record->name; ?></a></h6>
                 <p>سعر الخدمة : <?php echo $record->price_point; ?></p><br/>
                 <p id="p">تصميم مواقع خلال خمس ايام مع تقديم استضافه لمده شهر مجانا </p>
             </div>

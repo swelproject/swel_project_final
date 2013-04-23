@@ -1,45 +1,4 @@
-/*
-—————————————————————————————————————————––––––––
-Base:MQFramework by Chris Johnson
-—————————————————————————————————————————––––––––
-MQFramework is a responsive "snap" web framework
-that will degrade from wide-screen monitors all
-the way down to mobile devices. It uses 
-"media-queries" which can be found within the 
-CSS3 specification.
 
-/////////////////////////////////////////////////
- Grid Sizes
-/////////////////////////////////////////////////
-—————————————————————————————————————————––––––––
-Grid - 1140px - Wide
--------------------------------------------------
-1 2 3 4 5 6 7 8 9 10 11 12
-75 170 265 360 455 550 646 749 835 930 1025 1120
--------------------------------------------------
-—————————————————————————————————————————––––––––
-Grid - 960px - Normal
--------------------------------------------------
-1 2 3 4 5 6 7 8 9 10 11 12
-60 140 220 300 380 460 540 620 700 780 860 940
--------------------------------------------------
-—————————————————————————————————————————––––––––
-Grid - 768px - iPad
--------------------------------------------------
-1 2 3 4 5 6 7 8 9 10 11 12
-44 108 172 236 300 364 428 492 556 620 684 748
--------------------------------------------------
-—————————————————————————————————————————––––––––
-Grid - 480px - iPhone Wide
-—————————————————————————————————————————––––––––
-—————————————————————————————————————————––––––––
-Grid - 300px - iPhone
-—————————————————————————————————————————––––––––
-—————————————————————————————————————————––––––––
-Print
-—————————————————————————————————————————––––––––
-
-*/
 
 .container { width:1140px;margin:0px auto;padding:0px;position:relative;}
 .row {
@@ -47,7 +6,8 @@ Print
 }
 p,h5,h6 {text-align:right;font-family:ChivoBlack;}
 .box-desc h5{font-family:ChivoBlack;}
-.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12 { display:inline;float:right;position:relative;margin-left:10px;margin-right:10px;
+.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12 {
+	 display:inline;float:right;position:relative;margin-left:10px;margin-right:10px;
 -webkit-transition: all 1s ease-in;
     -moz-transition: all 1s ease-in;
     -o-transition: all 1s ease-in;

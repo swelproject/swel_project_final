@@ -43,13 +43,13 @@
             #mail_icon{margin-top:10px; padding:1px;  border: 1px solid #ccc;-webkit-border-radius: 3px;
                        -moz-border-radius: 3px;
                        border-radius : 3px;background:#fff;}
-        </style>
+            </style>
 
-    </head>
-    <body>
+        </head>
+        <body>
 
-        <!-- start of wrapper -->
-        <div id="wrapper">
+            <!-- start of wrapper -->
+            <div id="wrapper">
 
             <!-- start of section top -->
             <section id="top">
@@ -65,6 +65,21 @@
                 <div id="left">
                     <h3 style="float:right;color:#fff;width:800px;text-align:center">اخر الرسائل الوارده اليك</h3>                       
 
+                    <?php
+                    $sql = 'SELECT * FROM `order` INNER JOIN service ON `order`.`s_id` = service.id WHERE `order`.id =' . $order_id;
+                    $query_service_data = $this->db->query($sql);
+                    if ($query_service_data->num_rows() > 0) {
+                        $query_service = $query_service_data->result();
+
+                        foreach ($query_service as $service_data) {
+                            ?>
+                    <div id="serv_content">
+                        
+                    </div>
+                            <?php
+                        }
+                    }
+                    ?>
                     <div class="chat_box" >
                         <?php
                         $this->db->from('service_message');

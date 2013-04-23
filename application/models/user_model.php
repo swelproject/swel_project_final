@@ -256,6 +256,11 @@ class User_model extends CI_Model {
         }
     }
 
+    function addcomment($data) {
+        $insert = $this->db->insert('service_message', $data);
+        return $insert;
+    }
+
 ////////////////////////////////////////////////////					
 }
 ?>

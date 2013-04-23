@@ -86,6 +86,10 @@ class c_sad extends CI_Controller {
         );
         $this->load->model('csad');
         if ($this->csad->update($data, "order", $id)) {
+            //get user_id
+            $this->load->model('notifications');
+            $this->notifications->add($this->csad->get_user_id($id), 'تم حجز خدمتك قيد التنفيذ', 'user/chat_service/' . $id . '/' . $this->session->userdata('employee_id'), 'employee', 'employee', 'خدماتك');
+            //
             return TRUE;
         } else {
             return FALSE;
@@ -147,6 +151,10 @@ class c_sad extends CI_Controller {
                         'type' => 'employee'
                     );
                     if ($this->csad->addcomment($data)) {
+                        //get user_id
+                        $this->load->model('notifications');
+                        $this->notifications->add($user_id, 'لقد وصلك رساله على الخدمة الخاصه بك', 'user/chat_service/' . $order_id . '/' . $this->session->userdata('employee_id'), 'employee', 'employee', 'خدماتك');
+                        //
                         $message = array("mes" => "تم أضافة " . $chat_message . " .");
 //                unset($this->input->post('categoryname'));
 //                $this->load->view('civou/view_allcategory', $message);

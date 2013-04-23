@@ -19,7 +19,7 @@
     if ($queryy->num_rows() > 0) {
         $rowss = $queryy->result();
         foreach ($rowss as $roww) {
-             echo eval("?>" . $roww->content . "<?" ."</div>") ;
+             echo eval("?>" . $roww->content . "<?" .'</div>') ;
         }
     }
     ?>

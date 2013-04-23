@@ -138,7 +138,7 @@ blockquote ,p.author-company, ul.tweet_list li, form#searchForm input#s {
 blockquote {
 	margin:0 0 20px 0;
 	padding: 0 0 0 33px; 
-	background:url("../images/blockquote.png")/*tpa=http://iweb-studio.com/themepreview/lp/versuz/images/icons/blockquote.png*/ no-repeat 0% 4px;
+	background:url("../images/blockquote.png")no-repeat 0% 4px;
 	color:#999;
 }
 	
@@ -259,7 +259,7 @@ ul.bullets {
 }
 
 ul.bullets li {
-	background:url("../images/bullet.gif")/*tpa=http://iweb-studio.com/themepreview/lp/versuz/images/icons/bullet.gif*/ no-repeat 0% 5px;
+	background:url("../images/bullet.gif" no-repeat 0% 5px;
 	padding-left:14px;
 }
 

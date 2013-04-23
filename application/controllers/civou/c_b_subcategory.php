@@ -16,7 +16,11 @@ class c_b_subcategory extends CI_Controller {
             $topic_id = $this->uri->segment(4);
             $this->load->model('sitead');
             $data = array('statue' => '1');
-            $this->sitead->approve_topic($topic_id,$data);
+            $this->sitead->approve_topic($topic_id, $data);
+            //get user_id
+            $this->load->model('notifications');
+            $this->notifications->add($this->sitead->get_user_id($topic_id), 'تم الموافقه على أضافة موضوعك الى المدونة', 'site/blog_details/' . $topic_id . '/' . $this->session->userdata('employee_id'), 'admin', 'employee', 'المدونة');
+            //
             redirect('site/blog');
         } else {
             $this->load->view('civou/view_login');
@@ -96,7 +100,7 @@ class c_b_subcategory extends CI_Controller {
                 $this->image_lib->resize();
                 ////////////////////////////////////////////////////
                 $query_str = "insert into topic ( user_id, title ,content, t_photo_name,c_id,sc_id ,user_type,statue) values (?,?,?,?,?,?,?,?) ";
-                $result = $this->db->query($query_str, array($id, $name, $topic, $image_data['file_name'], $cat, $s_cat, $type,'1'));
+                $result = $this->db->query($query_str, array($id, $name, $topic, $image_data['file_name'], $cat, $s_cat, $type, '1'));
 
                 if ($result) {
                     redirect('civou/c_sitead');

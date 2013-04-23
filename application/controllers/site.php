@@ -122,16 +122,11 @@ class Site extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             if ($_POST['order_id']) {
                 $order_id = $this->input->post('order_id');
-//                $order_id = $_POST['order_id'];
-//                echo 'Heree' . $this->input->post('order_id') . "</br>";
-//                echo "Price : " . $this->input->post('order_price') . "</br>";
                 $user_id = $this->session->userdata('user_id');
-//                $order_point = $this->input->post('order_point');
                 $order_p = $this->input->post('order_p');
                 $c_id = $this->input->post('c_id');
                 $sc_id = $this->input->post('sc_id');
                 $duration = $this->input->post('duration');
-//                $order_point = $_POST['order_price'];
                 ///valid price
                 $amount = $this->sitead->vaild_amount_point($user_id);
 //                echo $amount;
@@ -144,8 +139,6 @@ class Site extends CI_Controller {
                     );
                     $this->load->view('message', $data);
                 } else {
-                    // decrimint from user point and insert in orders 
-//                    echo $user_id . $order_id . $order_point . $amount;
                     $amount = $this->sitead->do_buy_process($user_id, $order_id, $order_p, $amount, $c_id, $sc_id, $duration);
                     // order->order_num+1 where $order_id
                     $this->sitead->update_num_service($order_id);
@@ -332,7 +325,7 @@ class Site extends CI_Controller {
 
                 $user = $this->site_model->check_can_log_in($username, $password);
 
-                $login_data = array("logged_in" => true, "user_id" => $user['id'], "user_email" => $user['email']);
+                $login_data = array("logged_in" => true, "user_id" => $user['id'], "user_email" => $user['email'],"user_name"=>$username);
                 $this->session->set_userdata($login_data);
                 redirect('user/profile');
             } else {
